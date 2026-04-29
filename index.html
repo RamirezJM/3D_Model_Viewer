@@ -1,30 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
-  
-  <model-viewer 
-  id="modelo-clima"
-  src="assets/models/robot.glb" 
-  ar 
-  camera-controls 
-  touch-action="pan-y"
-  poster="assets/images/robot.jpg"
-  reveal="interaction"
-  shadow-intensity="1">
-  
-  <!-- Lo que se ve antes de cargar el 3D -->
-  <div slot="poster" id="lazy-load-poster"></div>
-  <button slot="poster" id="button-load">Ver en 360°</button>
-  
-</model-viewer>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#">Nosotros</a></li>
+        <li><a href="#">Equipos</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Nuestros equipos</h1>
+  </main>
+  <div class="contenedor-3d">
+
+    <!-- CAPA 1: EL POSTER Y SU BOTÓN -->
+    <div id="custom-poster">
+      <button id="btn-trigger">Ver en 360°</button>
+    </div>
+
+    <!-- CAPA 2: BOTÓN CERRAR -->
+    <button id="btn-close">Cerrar Vista 3D</button>
+
+    <!-- CAPA 3: EL MODELO -->
+    <model-viewer id="clima-model" src="assets/models/robot.glb" touch-action="pan-y" shadow-intensity="1"
+      camera-controls ar-modes="webxr scene-viewer quick-look" ar>
+    </model-viewer>
+
+  </div>
+
 
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js"></script>
   <script src="assets/js/script.js" type="module"></script>
 </body>
+
 </html>

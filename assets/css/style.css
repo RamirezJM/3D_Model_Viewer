@@ -3,33 +3,91 @@
   padding: 0;
   box-sizing: border-box;
 }
+body{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  color: #323232;
+}
 
-model-viewer {
+header{
+  display: flex;
+  justify-content: flex-end;
+  background: linear-gradient(to right, #023e84, #009667, #ade8f4);
+  padding: 1em;
+  
+}
+ul{
+  display: flex;
+  list-style-type: none;
+  gap: 1em;
+}
+
+a{
+  text-decoration: none;
+  color: #323232;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+h1{
+  text-align: center;
+  margin: 1em auto;
+}
+
+
+.contenedor-3d {
     width: 100%;
     height: 500px;
-    background-color: #f0f0f0;
-    --progress-bar-color: #007bff;
+    position: relative;
+    background-color: #eee;
+    overflow: hidden; /* Evita que nada se salga del cuadro */
   }
 
-  #lazy-load-poster {
+  /* Capa del Poster: Siempre arriba al inicio */
+  #custom-poster {
     position: absolute;
-    left: 0; right: 0; top: 0; bottom: 0;
-    background-image: url("../images/robot.jpg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+    inset: 0; /* Cubre todo el contenedor */
+    background: white url("../images/poster.jpg") no-repeat center / contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100; /* Muy alto para asegurar que está al frente */
   }
 
-  #button-load {
-    background-color: #007bff;
+  /* El Modelo 3D: Estará detrás del poster al inicio */
+  model-viewer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+  }
+  #btn-trigger{
+    padding: 0.5em 1em;
+    background-color: #023e84;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1.1rem;
+  }
+
+  /* Botón de Cerrar: Estará por encima del modelo pero debajo del poster inicialmente */
+  #btn-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 200; 
+    padding: 0.5em 1em;
+    background: #fb5607;
     color: white;
     border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    border-radius: 5px;
     cursor: pointer;
-    font-weight: bold;
+    font-size: 1.1rem;
+    display: none; /* Oculto al inicio */
   }
+
+  /* Clase para ocultar cosas definitivamente */
+  .hidden { display: none !important; }
