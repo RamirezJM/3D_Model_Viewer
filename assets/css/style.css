@@ -47,7 +47,7 @@ h1{
   #custom-poster {
     position: absolute;
     inset: 0; /* Cubre todo el contenedor */
-    background: white url("../images/poster.jpg") no-repeat center / contain;
+    background: white url("../images/moto.jpg") no-repeat center / contain;
     display: flex;
     align-items: center;
     justify-content: center;
